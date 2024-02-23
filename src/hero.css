@@ -1,0 +1,30 @@
+.Hero {
+    background-color: #f1f1f1;
+    min-height: 100vh;
+}
+
+.Hero .content {
+    padding-top: 40vh;
+    padding-left: 8rem;
+    width: 700px;
+}
+
+.Hero .content .title {
+    font-size: 60px;
+    margin: 20px 0;
+}
+
+.Hero .content .subtitle {
+    font-size: 28px;
+    font-weight: normal;
+    margin-bottom: 40px;
+}
+
+.Hero .content a {
+    background-color: #5BADCC;
+    border-radius: 10px;
+    color: black;
+    padding: 10px 40px;
+    text-decoration: none;
+    font-weight: bold;
+}
