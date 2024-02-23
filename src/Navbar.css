@@ -2,35 +2,37 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
+    background-color: #124681;
     color: white;
-  }
-  
-  .navbar-links ul {
+}
+
+.navbar-links ul {
     margin: 0;
     padding: 0;
     list-style: none;
     display: flex;
-  }
-  
-  .navbar-links li {
+}
+
+.navbar-links li {
     padding: 0 15px;
-  }
-  
-  .navbar-links a {
+}
+
+.navbar-links a {
     transition: color 0.3s ease;
-  }
-  
-  .navbar-links a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar-links a:hover {
     color: #0088a9;
-  }
-  
-  .brand-title {
+}
+
+.brand-title {
     font-size: 1.5em;
     margin: .5em;
-  }
-  
-  .toggle-button {
+}
+
+.toggle-button {
     position: absolute;
     top: .75em;
     right: .75em;
@@ -39,36 +41,35 @@
     justify-content: space-between;
     width: 30px;
     height: 21px;
-  }
-  
-  .toggle-button .bar {
+}
+
+.toggle-button .bar {
     height: 3px;
     width: 100%;
     background-color: white;
     border-radius: 10px;
-  }
-  
-  @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
     .navbar-links ul {
-      display: none;
-      width: 100%;
-      flex-direction: column;
+        display: none;
+        width: 100%;
+        flex-direction: column;
     }
-  
+
     .navbar-links ul li {
-      text-align: center;
+        text-align: center;
     }
-  
+
     .navbar-links ul li a {
-      padding: .5em 1em;
+        padding: .5em 1em;
     }
-  
+
     .navbar-links.active {
-      display: flex;
+        display: flex;
     }
-  
+
     .toggle-button {
-      display: flex;
+        display: flex;
     }
-  }
-  
+}
