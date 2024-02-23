@@ -15,13 +15,13 @@ function Navbar() {
                 <li><a href="#">Announcements</a></li>
                 <li><a href="#">Instructors</a></li>
                 <li><a href="#">Classes</a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Sign Up</a></li>
+                <li><a class="minor-button" href="#">Login</a></li>
+                <li><a class="major-button" href="#">Sign Up</a></li>
                 </ul>
             </div>
         </nav>
     </div>
   );
 }
-
+  
 export default Navbar;

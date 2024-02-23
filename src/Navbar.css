@@ -4,6 +4,7 @@
     align-items: center;
     background-color: #124681;
     color: white;
+    padding: 1em 0;
 }
 
 .navbar-links ul {
@@ -14,22 +15,37 @@
 }
 
 .navbar-links li {
-    padding: 0 15px;
+    padding: 0 10px;
 }
 
 .navbar-links a {
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
     color: #fff;
     text-decoration: none;
+    padding: 5px;
 }
 
 .navbar-links a:hover {
     color: #0088a9;
 }
 
+.navbar-links .minor-button {
+    background-color: #5BADCC;
+    color: black;
+    border-radius: 10px;
+    padding: 5px 30px;
+}
+
+.navbar-links .major-button {
+    background-color: #fff;
+    color: #124681;
+    border-radius: 10px;
+    padding: 5px 30px;
+}
+
 .brand-title {
     font-size: 1.5em;
-    margin: .5em;
+    margin-left: 1em;
 }
 
 .toggle-button {
@@ -50,7 +66,7 @@
     border-radius: 10px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     .navbar-links ul {
         display: none;
         width: 100%;
