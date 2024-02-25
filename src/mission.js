@@ -22,6 +22,7 @@ function Mission() {
                 <p>We are committed to fostering a <strong>supportive and inclusive community</strong> where each individual can embark on their personal journey towards physical health, mental clarity, and spiritual growth.</p>
               </li>
             </ul>
+            <a href="#">View Announcements</a>
           </div>
       </div>
     );

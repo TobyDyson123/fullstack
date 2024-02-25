@@ -1,3 +1,7 @@
+.Mission {
+    margin-bottom: 100px;
+}
+
 .Mission .content {
     margin: 80px; 
 }
@@ -36,6 +40,15 @@
     color: #124681;
 }
 
+.Mission a {
+    background-color: #5BADCC;
+    border-radius: 10px;
+    color: black;
+    padding: 10px 40px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
 @media screen and (max-width: 1000px) {
     .Mission .content {
         margin: 60px;
@@ -68,6 +81,13 @@
     }
     .Mission .mission-list li img.icon {
         margin-bottom: 20px;
+    }
+
+    .Mission a {
+        text-align: center;
+        display: block;
+        width: fit-content;
+        margin: auto;
     }
 }
   
