@@ -1,5 +1,8 @@
 import './info.css';
 import instructor from './Images/instructor.webp';
+import card1 from './Images/card1.jpeg';
+import card2 from './Images/card2.webp';
+import card3 from './Images/card3.jpeg';
 
 function Info() {
     return (
@@ -25,19 +28,19 @@ function Info() {
             <h1>What We Offer</h1>
             <div className='bottom-container-cards'>
                 <div className='card'>
-                    <img src={instructor} alt='instructors' />
+                    <img src={card1} alt='instructors' />
                     <p>
                         Fun, interactive classes led by trained professionals
                     </p>
                 </div>
                 <div className='card'>
-                    <img src={instructor} alt='instructors' />
+                    <img src={card2} alt='instructors' />
                     <p>
                         Client accounts to manage bookings and workshops
                     </p>
                 </div>
                 <div className='card'>
-                    <img src={instructor} alt='instructors' />
+                    <img src={card3} alt='instructors' />
                     <p>
                         Email newsletter keeping you up to date with the latest yoga news
                     </p>
