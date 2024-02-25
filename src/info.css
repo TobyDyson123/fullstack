@@ -5,6 +5,7 @@
 
 .Info h1 {
     font-size: 48px;
+    margin-top: 0;
 }
 
 .Info p {
@@ -13,9 +14,143 @@
 
 .Info .top-container {
     display: flex;
+    margin-bottom: 200px;
+    width: 100%;
 }
 
 .Info .top-container-text {
-    max-width: 700px;
+    width: 80%;
     margin-right: 50px;
+}
+
+.Info a {
+    text-decoration: none;
+    padding: 10px 40px;
+    color: white;
+    border-radius: 10px;
+    background-color: black;
+    font-weight: bold;
+}
+
+.Info .top-container-text a {
+    margin-top: 50px;
+    display: inline-block;
+}
+
+.Info .top-container-image {
+    display: flex;
+    align-items: center;
+    width: 70%;
+}
+
+.Info .top-container-image img{
+    width: 100%;
+    max-height: auto;
+}
+
+.Info .bottom-container {
+    text-align: center;
+}
+
+.Info .bottom-container-cards {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.Info .bottom-container-cards .card {
+    padding: 20px;
+    width: 30%;
+    margin: 20px 0;
+}
+
+.Info .bottom-container-cards .card img {
+    width: 100%;
+    height: auto;
+}
+
+@media screen and (max-width: 1300px) {
+    .Info .top-container-text {
+        width: 100%;
+    }
+
+    .Info .top-container-image {
+        width: 100%;
+    }
+
+    .Info h1 {
+        font-size: 36px;
+    }
+
+    .Info p {
+        font-size: 18px;
+    }
+
+    .Info .bottom-container-cards .card {
+        width: 45%;
+    } 
+}
+
+@media screen and (max-width: 1000px) {
+    .Info .top-container {
+        flex-direction: column;
+        margin-bottom: 150px;
+    }
+
+    .Info .top-container-text {
+        margin-bottom: 50px;
+    }
+
+    .Info .top-container-image {
+        width: 80%;
+        justify-content: center;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .Info {
+        padding: 50px;
+    }
+
+    .Info h1 {
+        font-size: 30px;
+    }
+
+    .Info p {
+        font-size: 16px;
+    }
+
+    .Info .bottom-container-cards .card {
+        width: 60%;
+    }
+
+    .Info .bottom-container-cards {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .Info .bottom-container-cards .card {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .Info {
+        padding: 50px;
+    }
+
+    .Info .top-container {
+        margin-bottom: 100px;
+    }
+
+    .Info .top-container-image {
+        width: 100%;
+    }
+
+    .Info .bottom-container-cards .card {
+        width: 100%;
+    }
 }
