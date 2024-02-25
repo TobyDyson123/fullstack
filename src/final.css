@@ -1,0 +1,24 @@
+.Final .content {
+    text-align: center;
+    max-width: 800px;
+    margin: 150px auto;
+}
+
+.Final h1 {
+    font-size: 48px;
+}
+
+.Final p {
+    font-size: 20px;
+}
+
+.Final .content a {
+    background-color: #5BADCC;
+    border-radius: 10px;
+    color: black;
+    padding: 10px 100px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 100px;
+    display: inline-block;
+}
