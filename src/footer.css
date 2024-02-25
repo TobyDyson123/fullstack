@@ -3,3 +3,19 @@
     color: white;
     padding: 30px;
 }
+
+.Footer .brand {
+    display: flex;
+    align-items: center;
+    margin-left: 1em;
+}
+
+.Footer .brand-title {
+    font-size: 1.5em;
+    margin-left: 10px;
+}
+
+.Footer .brand-icon img {
+    width: 40px;
+    height: 40px;
+}
