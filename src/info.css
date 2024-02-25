@@ -1,0 +1,21 @@
+.Info {
+    background-color: #5BADCC;
+    padding: 80px;
+}
+
+.Info h1 {
+    font-size: 48px;
+}
+
+.Info p {
+    font-size: 20px;
+}
+
+.Info .top-container {
+    display: flex;
+}
+
+.Info .top-container-text {
+    max-width: 700px;
+    margin-right: 50px;
+}
