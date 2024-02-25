@@ -36,19 +36,31 @@
     background-color: #5BADCC;
     color: black;
     border-radius: 10px;
-    padding: 5px 30px;
+    padding: 10px 30px;
 }
 
 .navbar-links .major-button {
     background-color: #fff;
     color: #124681;
     border-radius: 10px;
-    padding: 5px 30px;
+    padding: 10px 30px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    margin-left: 1em;
+    cursor: pointer;
 }
 
 .brand-title {
     font-size: 1.5em;
-    margin-left: 1em;
+    margin-left: 10px;
+}
+
+.brand-icon img {
+    width: 40px;
+    height: 40px;
 }
 
 .toggle-button {

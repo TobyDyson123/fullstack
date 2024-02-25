@@ -3,6 +3,7 @@ import Hero from './hero';
 import Mission from './mission';
 import Info from './info';
 import Final from './final';
+import Footer from './footer';
 
 function Home() {
   return (
@@ -12,6 +13,7 @@ function Home() {
         <Mission />
         <Info />
         <Final />
+        <Footer />
     </div>
   );
 }
