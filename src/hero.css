@@ -28,3 +28,43 @@
     text-decoration: none;
     font-weight: bold;
 }
+
+@media screen and (max-width: 1000px) {
+    .Hero .content {
+        padding-left: 0;
+        margin: auto;
+        width: 90%;
+    }
+    .Hero .content .title {
+        font-size: 48px;
+    }
+    .Hero .content .subtitle {
+        font-size: 20px;
+    }
+    .Hero .content a {
+        padding: 10px 30px;
+    }
+    
+}
+
+@media screen and (max-width: 800px) {
+    .Hero .content .title {
+        font-size: 36px;
+    }
+    .Hero .content .subtitle {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .Hero .content {
+        text-align: center;
+    }
+
+    .Hero .content .title {
+        font-size: 30px;
+    }
+    .Hero .content .subtitle {
+        font-size: 16px;
+    }
+}
