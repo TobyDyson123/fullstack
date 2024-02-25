@@ -1,0 +1,73 @@
+.Mission .content {
+    margin: 80px; 
+}
+  
+.Mission .content h1 {
+    color: #000; 
+    margin-bottom: 30px;
+    font-size: 48px;
+}
+  
+.Mission .mission-list {
+    list-style-type: none;
+    padding: 0;
+    font-size: 20px;
+    max-width: 1200px;
+}
+  
+.Mission .mission-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px; 
+}
+  
+.Mission .mission-list li img.icon {
+    margin-right: 30px; 
+    width: 50px; 
+    height: auto;
+}
+  
+.Mission .mission-list li p {
+    margin: 0;
+    line-height: 1.5; 
+}
+  
+.Mission .mission-list li p strong {
+    color: #124681;
+}
+
+@media screen and (max-width: 1000px) {
+    .Mission .content {
+        margin: 60px;
+    }
+    .Mission .content h1 {
+        font-size: 36px;
+    }
+    .Mission .mission-list {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .Mission .content {
+        margin: 30px;
+    }
+    .Mission .content h1 {
+        font-size: 30px;
+    }
+    .Mission .mission-list {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .Mission .mission-list li {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 60px;
+    }
+    .Mission .mission-list li img.icon {
+        margin-bottom: 20px;
+    }
+}
+  
