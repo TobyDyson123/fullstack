@@ -1,9 +1,10 @@
 .instructors-container {
-    margin: 150px 100px;
+    margin: 150px 0;
 }
 
 .instructors-container h1 {
     font-size: 48px;
+    margin-left: 100px;
 }
 
 .instructors-container .cards-container {
@@ -11,6 +12,8 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     padding: 1rem;
+    width: 90%;
+    margin: 0 auto;
   }
   
 .instructors-container .card {
@@ -19,15 +22,35 @@
     padding: 1rem;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    font-size: 20px;
+}
+
+.instructors-container .card h3 {
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+.instructors-container .image-container {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    display: flex;
+}
+
+.instructors-container img {
+    width: auto;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
 }
   
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
 .instructors-container .cards-container {
     grid-template-columns: repeat(2, 1fr);
 }
 }
   
-  @media (max-width: 480px) {
+  @media (max-width: 850px) {
     .instructors-container .cards-container {
       grid-template-columns: 1fr;
     }

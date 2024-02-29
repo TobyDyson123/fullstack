@@ -20,6 +20,17 @@ const Instructors = () => {
     fetchInstructors();
   }, []);
 
+  // Function to calculate years of experience
+  const calculateExperience = (startDate) => {
+    const start = new Date(startDate);
+    const now = new Date();
+    const years = now.getFullYear() - start.getFullYear();
+    // Check if the current date has already passed the start date this year
+    const months = now.getMonth() - start.getMonth();
+    const isAnniversaryPassed = months > 0 || (months === 0 && now.getDate() >= start.getDate());
+    return isAnniversaryPassed ? years : years - 1;
+  };
+
   return (
     <div className="Instructors">
       <Navbar />
@@ -29,13 +40,17 @@ const Instructors = () => {
           {instructors.map(instructor => (
             <div key={instructor.instructorID} className="card">
               <h2>{instructor.firstname} {instructor.surname}</h2>
-              <img src={instructor.photo} alt={instructor.firstname} />
-              <p>Start Date: {instructor.startDate}</p>
+              <div className="image-container">
+                <img src={instructor.photo} alt={`${instructor.firstname} ${instructor.surname}`} />
+              </div>
+              <p><strong>Experience:</strong> {calculateExperience(instructor.startDate)} years</p>
+              <h3>Bio:</h3>
               <p>{instructor.bio}</p>
             </div>
           ))}
         </div>
       </div>
+      <Link to="/">View Classes</Link>
       <Footer />
     </div>
   );
