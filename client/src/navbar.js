@@ -19,7 +19,7 @@ function Navbar() {
                 <ul>
                 <li><a href="#">Announcements</a></li>
                 <li><Link to="/instructors">Instructors</Link></li>
-                <li><a href="#">Classes</a></li>
+                <li><Link to="/classes">Classes</Link></li>
                 <li><a class="minor-button" href="#">Login</a></li>
                 <li><a class="major-button" href="#">Sign Up</a></li>
                 </ul>

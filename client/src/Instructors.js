@@ -50,7 +50,7 @@ const Instructors = () => {
             </div>
           ))}
         </div>
-        <Link to="/">View Classes</Link>
+        <Link to="/classes">View Classes</Link>
       </div>
       <Footer />
     </div>

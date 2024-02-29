@@ -47,7 +47,7 @@ function Info() {
                     </p>
                 </div>
             </div>
-            <a href='#'>View classes</a>
+            <Link to="/classes">View classes</Link>
           </div>
       </div>
     );

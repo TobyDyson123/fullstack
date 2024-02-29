@@ -1,6 +1,7 @@
 import './App.css';
 import Home from './Home';
 import Instructors from './Instructors';
+import Classes from './Classes';
 import {HashRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/instructors" element={<Instructors />} />
+          <Route path="/classes" element={<Classes />} />
         </Routes>
       </Router>
     </div>
