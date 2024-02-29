@@ -43,6 +43,20 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.instructors-container a {
+    background-color: #5BADCC;
+    border-radius: 10px;
+    color: black;
+    padding: 15px 80px;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    width: fit-content;
+    margin: auto;
+    margin-top: 50px;
+    font-size: 20px;
+}
   
 @media (max-width: 1200px) {
 .instructors-container .cards-container {

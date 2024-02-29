@@ -3,6 +3,7 @@ import instructor from './Images/instructor.webp';
 import card1 from './Images/card1.jpeg';
 import card2 from './Images/card2.webp';
 import card3 from './Images/card3.jpeg';
+import { Link } from 'react-router-dom';
 
 function Info() {
     return (
@@ -18,7 +19,7 @@ function Info() {
                     Our instructors are not only certified through rigorous training programs, 
                     but they also embody the principles of yoga in their daily lives.
                 </p>
-                <a href='#'>Meet the team</a>
+                <Link to='/instructors'>Meet the team</Link>
             </div>
             <div className='top-container-image'>
                 <img src={instructor} alt='instructors' />

@@ -2,6 +2,7 @@ import Navbar from "./navbar";
 import Footer from "./footer";
 import { useState, useEffect } from 'react';
 import './instructors.css';
+import { Link } from 'react-router-dom';
 
 const Instructors = () => {
   const [instructors, setInstructors] = useState([]);
@@ -25,7 +26,7 @@ const Instructors = () => {
     const start = new Date(startDate);
     const now = new Date();
     const years = now.getFullYear() - start.getFullYear();
-    // Check if the current date has already passed the start date this year
+
     const months = now.getMonth() - start.getMonth();
     const isAnniversaryPassed = months > 0 || (months === 0 && now.getDate() >= start.getDate());
     return isAnniversaryPassed ? years : years - 1;
@@ -49,8 +50,8 @@ const Instructors = () => {
             </div>
           ))}
         </div>
+        <Link to="/">View Classes</Link>
       </div>
-      <Link to="/">View Classes</Link>
       <Footer />
     </div>
   );
