@@ -2,8 +2,8 @@ const express = require('express');
 const connection = require('./database.js');
 const app = express();
 
-app.get('/api', (req, res) => {
-    let sql = 'SELECT * FROM users';
+app.get('/api/instructors', (req, res) => {
+    let sql = 'SELECT * FROM Instructor';
     connection.query(sql, (error, results) => {
         if (error) {
             console.log('Error fetching users', error);
