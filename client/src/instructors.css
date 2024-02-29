@@ -59,12 +59,12 @@
 }
   
 @media (max-width: 1200px) {
-.instructors-container .cards-container {
-    grid-template-columns: repeat(2, 1fr);
-}
+    .instructors-container .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
   
-  @media (max-width: 850px) {
+@media (max-width: 850px) {
     .instructors-container .cards-container {
       grid-template-columns: 1fr;
     }
@@ -74,4 +74,4 @@
         margin-left: 0;
         text-align: center;
     }
-  }
+}
