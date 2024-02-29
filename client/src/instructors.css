@@ -68,4 +68,10 @@
     .instructors-container .cards-container {
       grid-template-columns: 1fr;
     }
+
+    .instructors-container h1 {
+        font-size: 40px;
+        margin-left: 0;
+        text-align: center;
+    }
   }
