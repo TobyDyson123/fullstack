@@ -14,7 +14,7 @@ app.get('/api/instructors', (req, res) => {
 });
 
 app.get('/api/classes', (req, res) => {
-    let sql = "SELECT Class.classID, Class.title, Class.time, Class.date, Class.duration, Class.capacity, CONCAT(Instructor.firstname, ' ', Instructor.surname) AS instructor FROM  Class JOIN  Instructor ON Class.instructorID = Instructor.instructorID;";
+    let sql = "SELECT Class.classID, Class.title, Class.time, Class.date, Class.duration, Class.capacity, CONCAT(Instructor.firstname, ' ', Instructor.surname) AS instructor FROM  Class JOIN  Instructor ON Class.instructorID = Instructor.instructorID ORDER BY Class.date, Class.time ASC;";
     connection.query(sql, (error, results) => {
         if (error) {
             console.log('Error fetching classes', error);
