@@ -1,0 +1,63 @@
+.Classes {
+    margin-top: 150px;
+}
+
+.Classes h1 {
+    font-size: 48px;
+    margin-left: 100px;
+}
+
+.classes-container .cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    width: 90%;
+    margin: 0 auto;
+}
+  
+.classes-container .card {
+    border: 2px solid #5BADCC;
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    font-size: 16px;
+}
+
+.classes-container .card:hover {
+    background-color: #F1F1F1;
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+/* .classes-container .cards-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    justify-content: space-around;
+    margin-top: 50px;
+    border: 2px solid #5BADCC;
+    border-radius: 25px;
+    margin: auto;
+    margin-bottom: 100px;
+}
+
+.classes-container .card {
+    border-bottom: 1px solid #ccc;
+    padding: 20px;
+}
+
+.classes-container .card:first-child {
+    border-radius: 25px 25px 0 0;
+}
+
+.classes-container .card:last-child {
+    border-radius: 0 0 25px 25px;
+    border-bottom: none;
+}
+
+.classes-container .card:hover {
+    background-color: #F1F1F1;
+    cursor: pointer;
+} */

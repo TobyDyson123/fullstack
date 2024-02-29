@@ -13,6 +13,17 @@ app.get('/api/instructors', (req, res) => {
     });
 });
 
+app.get('/api/classes', (req, res) => {
+    let sql = "SELECT Class.classID, Class.title, Class.time, Class.date, Class.duration, Class.capacity, CONCAT(Instructor.firstname, ' ', Instructor.surname) AS instructor FROM  Class JOIN  Instructor ON Class.instructorID = Instructor.instructorID;";
+    connection.query(sql, (error, results) => {
+        if (error) {
+            console.log('Error fetching classes', error);
+        } else {
+            res.send(results);
+        }
+    });
+});
+
 app.listen(5000, () => {
     console.log('Server is running on port 5000');
     connection.connect((err) => {
