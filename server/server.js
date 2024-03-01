@@ -24,6 +24,12 @@ app.get('/api/classes', (req, res) => {
     });
 });
 
+app.get('/api/classes/:id', (req, res) => {
+    const { id } = req.params;
+    // Fetch class details from the database and respond
+  });
+  
+
 app.listen(5000, () => {
     console.log('Server is running on port 5000');
     connection.connect((err) => {

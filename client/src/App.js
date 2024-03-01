@@ -2,6 +2,7 @@ import './App.css';
 import Home from './Home';
 import Instructors from './Instructors';
 import Classes from './Classes';
+import Class from './Class';
 import {HashRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/instructors" element={<Instructors />} />
           <Route path="/classes" element={<Classes />} />
+          <Route path="/class/:id" element={<Class />} />
         </Routes>
       </Router>
     </div>

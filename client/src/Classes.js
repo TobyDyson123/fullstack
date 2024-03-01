@@ -2,6 +2,7 @@ import Navbar from "./navbar";
 import Footer from "./footer";
 import { useState, useEffect } from 'react';
 import './classes.css';
+import { useNavigate } from 'react-router-dom';
 
 const Classes = () => {
     const [classes, setClasses] = useState([]);
@@ -20,10 +21,16 @@ const Classes = () => {
       fetchClasses();
     }, []);
 
+    const navigate = useNavigate();
+    const handleCardClick = (classID) => {
+      console.log("Navigating to class with ID:", classID);
+      navigate(`/class/${classID}`);
+    };
+
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         const day = date.getDate().toString().padStart(2, '0');
-        const month = (date.getMonth() + 1).toString().padStart(2, '0'); // getMonth() is zero-indexed
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
         const year = date.getFullYear();
         return `${day}/${month}/${year}`;
     };
@@ -48,14 +55,25 @@ const Classes = () => {
 
     const daysUntilClass = (classDate) => {
         const today = new Date();
-        today.setHours(0, 0, 0, 0);  // Reset time to midnight for accurate day difference calculation
+        today.setHours(0, 0, 0, 0); 
         const startDate = new Date(classDate);
-        startDate.setHours(0, 0, 0, 0);  // Ensure time is set to midnight
+        startDate.setHours(0, 0, 0, 0); 
         const timeDiff = startDate - today;
         const dayDiff = timeDiff / (1000 * 60 * 60 * 24);
-        return Math.max(0, Math.ceil(dayDiff));  // Ensure negative days are not returned
+        return Math.max(0, Math.ceil(dayDiff));
     };
       
+    const SkeletonLoader = () => {
+      return (
+        <div className="skeleton">
+          <div className="skeleton-title"></div>
+          <div className="skeleton-info"></div>
+          <div className="skeleton-info"></div>
+          <div className="skeleton-info"></div>
+          <div className="skeleton-info"></div>
+        </div>
+      );
+    };    
 
     return (
       <div className="Classes">
@@ -63,8 +81,11 @@ const Classes = () => {
         <div className="classes-container">
           <h1>Available Classes</h1>
           <div className="cards-container">
-            {classes.map(Class => (
-              <div key={Class.classID} className="card">
+          {classes.length === 0 ? (
+            Array.from({ length: 9 }).map((_, index) => <SkeletonLoader key={index} />)
+          ) : (
+            classes.map(Class => (
+              <div key={Class.classID} className="card" onClick={() => handleCardClick(Class.classID)}>
                 <h2>{Class.title}</h2>
                 <p><strong>Date: </strong>{formatDate(Class.date)}</p>
                 <p><strong>Time: </strong>{formatTime(Class.time)}</p>
@@ -73,7 +94,8 @@ const Classes = () => {
                 <p><strong>Capacity: </strong>{Class.capacity}</p>
                 <span id="countdown">{daysUntilClass(Class.date)} days left!</span>
               </div>
-            ))}
+            ))
+          )}
           </div>
         </div>
         <Footer />
