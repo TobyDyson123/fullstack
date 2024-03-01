@@ -3,6 +3,7 @@ import Footer from "./footer";
 import { useState, useEffect } from 'react';
 import './classes.css';
 import { useNavigate } from 'react-router-dom';
+import SkeletonLoader from './skeleton';
 
 const Classes = () => {
     const [classes, setClasses] = useState([]);
@@ -61,19 +62,7 @@ const Classes = () => {
         const timeDiff = startDate - today;
         const dayDiff = timeDiff / (1000 * 60 * 60 * 24);
         return Math.max(0, Math.ceil(dayDiff));
-    };
-      
-    const SkeletonLoader = () => {
-      return (
-        <div className="skeleton">
-          <div className="skeleton-title"></div>
-          <div className="skeleton-info"></div>
-          <div className="skeleton-info"></div>
-          <div className="skeleton-info"></div>
-          <div className="skeleton-info"></div>
-        </div>
-      );
-    };    
+    };   
 
     return (
       <div className="Classes">

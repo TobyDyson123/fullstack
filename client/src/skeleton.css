@@ -1,0 +1,37 @@
+.skeleton {
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+}
+  
+.skeleton-title {
+    width: 80%;
+    height: 20px;
+    background-color: #e0e0e0;
+    margin-bottom: 10px;
+}
+  
+.skeleton-info {
+    width: 90%;
+    height: 10px;
+    background-color: #e0e0e0;
+    margin-bottom: 5px;
+}
+  
+@keyframes shimmer {
+    0% {
+      background-color: #e0e0e0;
+    }
+    50% {
+      background-color: #cccccc;
+    }
+    100% {
+      background-color: #e0e0e0;
+    }
+}
+  
+.skeleton div {
+    animation: shimmer 2s infinite;
+}

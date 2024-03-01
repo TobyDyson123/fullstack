@@ -3,6 +3,7 @@ import Footer from "./footer";
 import { useState, useEffect } from 'react';
 import './instructors.css';
 import { Link } from 'react-router-dom';
+import SkeletonLoader from './skeleton';
 
 const Instructors = () => {
   const [instructors, setInstructors] = useState([]);
@@ -38,17 +39,21 @@ const Instructors = () => {
       <div className="instructors-container">
         <h1>Meet the team</h1>
         <div className="cards-container">
-          {instructors.map(instructor => (
-            <div key={instructor.instructorID} className="card">
-              <h2>{instructor.firstname} {instructor.surname}</h2>
-              <div className="image-container">
-                <img src={instructor.photo} alt={`${instructor.firstname} ${instructor.surname}`} />
+          {instructors.length === 0 ? (
+            Array.from({ length: 9 }).map((_, index) => <SkeletonLoader key={index} />)
+          ) : (
+            instructors.map(instructor => (
+              <div key={instructor.instructorID} className="card">
+                <h2>{instructor.firstname} {instructor.surname}</h2>
+                <div className="image-container">
+                  <img src={instructor.photo} alt={`${instructor.firstname} ${instructor.surname}`} />
+                </div>
+                <p><strong>Experience:</strong> {calculateExperience(instructor.startDate)} years</p>
+                <h3>Bio:</h3>
+                <p>{instructor.bio}</p>
               </div>
-              <p><strong>Experience:</strong> {calculateExperience(instructor.startDate)} years</p>
-              <h3>Bio:</h3>
-              <p>{instructor.bio}</p>
-            </div>
-          ))}
+            ))
+          )}
         </div>
         <Link to="/classes">View Classes</Link>
       </div>
