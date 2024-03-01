@@ -24,6 +24,7 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     font-size: 16px;
     transition: transform 0.25s ease;
+    position: relative;
 }
 
 .classes-container .card:hover {
@@ -35,6 +36,15 @@
 .classes-container .card h2 {
     font-size: 20px;
     margin-bottom: 30px;
+}
+
+#countdown {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    background-color: aquamarine;
+    padding: 5px 10px;
+    border-radius: 10px;
 }
 
 @media (max-width: 1200px) {

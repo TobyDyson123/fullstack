@@ -46,6 +46,17 @@ const Classes = () => {
         }
     };
 
+    const daysUntilClass = (classDate) => {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);  // Reset time to midnight for accurate day difference calculation
+        const startDate = new Date(classDate);
+        startDate.setHours(0, 0, 0, 0);  // Ensure time is set to midnight
+        const timeDiff = startDate - today;
+        const dayDiff = timeDiff / (1000 * 60 * 60 * 24);
+        return Math.max(0, Math.ceil(dayDiff));  // Ensure negative days are not returned
+    };
+      
+
     return (
       <div className="Classes">
         <Navbar />
@@ -60,7 +71,7 @@ const Classes = () => {
                 <p><strong>Duration: </strong>{formatDuration(Class.duration)}</p>
                 <p><strong>Lead by: </strong>{Class.instructor}</p>
                 <p><strong>Capacity: </strong>{Class.capacity}</p>
-                <span className="countdown"></span>
+                <span id="countdown">{daysUntilClass(Class.date)} days left!</span>
               </div>
             ))}
           </div>
