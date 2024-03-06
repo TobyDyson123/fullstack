@@ -26,9 +26,18 @@ app.get('/api/classes', (req, res) => {
 
 app.get('/api/classes/:id', (req, res) => {
     const { id } = req.params;
-    // Fetch class details from the database and respond
-  });
-  
+    let sql = "SELECT Class.classID, Class.title, Class.time, Class.date, Class.duration, Class.capacity, CONCAT(Instructor.firstname, ' ', Instructor.surname) AS instructor FROM Class JOIN Instructor ON Class.instructorID = Instructor.instructorID WHERE Class.classID = ?;";
+    
+    connection.query(sql, [id], (error, results) => {
+        if (error) {
+            console.error('Error fetching class details', error);
+            res.status(500).send('Error fetching class details');
+        } else {
+            // Assuming you're expecting one class back, you might want to just send the first result
+            res.json(results[0] || {});
+        }
+    });
+});  
 
 app.listen(5000, () => {
     console.log('Server is running on port 5000');

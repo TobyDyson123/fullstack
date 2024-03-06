@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Navbar from './navbar';
+import Footer from './footer';
+import './class.css';
 
 const Class = () => {
   const { id } = useParams();
@@ -24,9 +27,15 @@ const Class = () => {
   }
 
   return (
-    <div className="class-detail">
+    <div className="Class">
+      <Navbar />
       <h1>{classDetails.title}</h1>
-      {/* Display other details */}
+      <p>{classDetails.date}</p>
+      <p>{classDetails.time}</p>
+      <p>{classDetails.duration}</p>
+      <p>{classDetails.instructor}</p>
+      <p>{classDetails.capacity}</p>
+      <Footer />
     </div>
   );
 };
