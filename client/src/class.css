@@ -1,0 +1,127 @@
+.Class {
+    margin-top: 150px;
+}
+
+.Class h1 {
+    font-size: 48px;
+    margin-left: 100px;
+}
+
+.class-info-container h2 {
+    font-size: 30px;
+    margin-bottom: 30px;
+    margin-top: 5px;
+}
+
+.class-info-container p {
+    margin: 12px 0;
+}
+
+.class-info-container {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid #5BADCC;
+    border-radius: 5px;
+    padding: 2rem 4rem;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    font-size: 16px;
+    max-width: 800px;
+    width: 80%;
+    margin: 0 auto 100px auto;
+}
+
+.class-info-container .class-details-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.class-info-container .class-image-wrapper {
+    margin-left: auto;
+}
+
+.class-info-container .class-image-wrapper img {
+    height: 400px;
+    width: auto;
+    border-radius: 30px;
+}
+
+.class-info-container a {
+    background-color: #5BADCC;
+    border-radius: 10px;
+    color: black;
+    padding: 10px 40px;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    font-size: 20px;
+    text-align: center;
+    margin-top: auto;
+}
+
+.return-to-classes-btn {
+    position: absolute;
+    top: -50px;
+}
+  
+.return-to-classes-btn a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+  
+.return-to-classes-btn a:hover {
+    color: blue;
+}
+  
+  .return-to-classes-btn i {
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 950px) {
+    .class-image-wrapper {
+        display: none;
+    }
+
+    .class-details-wrapper {
+        margin: 0 auto;
+    }
+
+    .class-info-container {
+        width: 50%;
+    }
+
+    .class-info-container .class-details-wrapper a {
+        margin-top: 50px;
+    }
+
+    .Class h1 {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .class-info-container {
+        width: 60%;
+        padding: 1.5rem 3rem;
+    }
+    
+    .class-info-container h2 {
+        font-size: 26px;
+    }
+
+    .Class h1 {
+        font-size: 36px;
+        margin-left: 0;
+        text-align: center;
+    }
+    
+    .return-to-classes-btn a {
+        font-size: 14px;
+    }
+}
+  
