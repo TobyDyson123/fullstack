@@ -2,11 +2,14 @@ import Navbar from "./navbar";
 import Footer from "./footer";
 import { useState } from 'react';
 import './login.css';
+import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const navigate = useNavigate();
   
     const handleLogin = async (e) => {
       e.preventDefault();
@@ -22,8 +25,8 @@ const Login = () => {
         const data = await response.json();
   
         if (data.success) {
-          // Handle login success, redirect or store JWT token etc.
           console.log('Login successful');
+          navigate('/'); // Redirects the user to the homepage
         } else {
           setError(data.message || 'Login failed');
         }
@@ -50,7 +53,7 @@ const Login = () => {
                 </label>
                 <button className="btn-primary" type="submit">Submit</button>
                 </form>
-                <div className="signup-link">Not a member? <a href="signup.html">Sign up</a></div>
+                <div className="signup-link">Not a member? <Link to="/signup">Sign up</Link></div>
                 {error && <p style={{textAlign: "center"}}>{error}</p>}
             </div>
         </div>

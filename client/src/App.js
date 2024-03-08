@@ -4,6 +4,7 @@ import Instructors from './Instructors';
 import Classes from './Classes';
 import Class from './Class';
 import Login from './Login';
+import Signup from './Signup';
 import {HashRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/instructors" element={<Instructors />} />
           <Route path="/classes" element={<Classes />} />
           <Route path="/class/:id" element={<Class />} />

@@ -21,7 +21,7 @@ function Navbar() {
                 <li><Link to="/instructors">Instructors</Link></li>
                 <li><Link to="/classes">Classes</Link></li>
                 <li><Link class="minor-button" to="/login">Login</Link></li>
-                <li><a class="major-button" href="#">Sign Up</a></li>
+                <li><Link class="major-button" to="/signup">Sign Up</Link></li>
                 </ul>
             </div>
         </nav>
