@@ -1,5 +1,7 @@
 const express = require('express');
 const connection = require('./database.js');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const app = express();
 
 app.get('/api/instructors', (req, res) => {
@@ -37,7 +39,37 @@ app.get('/api/classes/:id', (req, res) => {
             res.json(results[0] || {});
         }
     });
-});  
+});
+
+app.post('/api/login', async (req, res) => {
+    const { username, password } = req.body;
+  
+    const query = 'SELECT * FROM users WHERE username = ?';
+  
+    connection.query(query, [username], async (error, results) => {
+      if (error) {
+        return res.status(500).json({ message: 'Error occurred' });
+      }
+  
+      if (results.length > 0) {
+        const user = results[0];
+  
+        // Compare hashed password
+        const match = await bcrypt.compare(password, user.password);
+  
+        if (match) {
+          // Create JWT token
+          const token = jwt.sign({ userId: user.id }, 'YOUR_SECRET_KEY', { expiresIn: '1h' });
+  
+          res.json({ success: true, token });
+        } else {
+          res.status(401).json({ success: false, message: 'Authentication failed' });
+        }
+      } else {
+        res.status(404).json({ success: false, message: 'User not found' });
+      }
+    });
+});
 
 app.listen(5000, () => {
     console.log('Server is running on port 5000');

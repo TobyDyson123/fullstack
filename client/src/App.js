@@ -3,6 +3,7 @@ import Home from './Home';
 import Instructors from './Instructors';
 import Classes from './Classes';
 import Class from './Class';
+import Login from './Login';
 import {HashRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/instructors" element={<Instructors />} />
           <Route path="/classes" element={<Classes />} />
           <Route path="/class/:id" element={<Class />} />
