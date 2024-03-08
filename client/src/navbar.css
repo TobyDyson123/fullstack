@@ -16,6 +16,7 @@
     padding: 0;
     list-style: none;
     display: flex;
+    align-items: center;
 }
 
 .navbar-links li {
@@ -64,6 +65,14 @@
 .navbar .brand-icon img {
     width: 40px;
     height: 40px;
+}
+
+.navbar .logout-button {
+    background-color: #5BADCC;
+    color: black;
+    border-radius: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
 }
 
 .toggle-button {
