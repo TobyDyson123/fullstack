@@ -1,10 +1,98 @@
-.banner {
+.Login .banner {
     position: absolute;
     width: 100%;
     height: 50%;
-    top: 0;
-    background: #7552F2;
+    top: -50px;
+    background: #124681;
     transform: skewY(5deg);
     transform-origin: top right;
     z-index: -1;
+}
+
+.Login .login-container {
+    min-height: 80vh;
+}
+
+.Login .login-content {
+    margin: 100px auto;
+    padding: 80px 80px 40px 80px;
+    border-radius: 25px;
+    border: 2px solid #AAAAAA;
+    -webkit-box-shadow: 6px 5px 12px 3px rgba(0,0,0,0.3);
+    -moz-box-shadow: 6px 5px 12px 3px rgba(0,0,0,0.3);
+    box-shadow: 6px 5px 12px 3px rgba(0,0,0,0.3);
+    background: #FAFAFA;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Login .login-content input {
+    width: 100%;
+    padding: 10px;
+    margin: 40px 0;
+    border-radius: 5px;
+    border: 1px solid #AAAAAA;
+    box-sizing: border-box;
+    margin-top: 0;
+    font-size: 20px;
+}
+
+.Login .login-content h1 {
+    margin: 0;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 36px;
+}
+
+.Login .btn-primary {
+    padding: 10px 20px;
+    background: #5BADCC;
+    color: black;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.Login .login-content .signup-link {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 18px;
+}
+
+@media screen and (max-width: 1000px) {
+    .Login .login-content {
+        width: 60%;
+        padding: 40px;
+    }
+
+    .Login .login-content label, .Login .login-content input {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .Login .btn-primary {
+        font-size: 20px;
+        margin-top: 0px;
+    }
+
+    .Login .login-content h1 {
+        font-size: 24px;
+    }
+
+    .Login .login-content .signup-link {
+        font-size: 16px;
+        margin-top: 30px;
+    }
+
+    .Login .login-content button {
+        font-size: 16px;
+    }
 }

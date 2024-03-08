@@ -33,20 +33,28 @@ const Login = () => {
     };
   
     return (
-      <div>
-        <h2>Login</h2>
-        <form onSubmit={handleLogin}>
-          <label>
-            Username:
-            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-          </label>
-          <label>
-            Password:
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          </label>
-          <button type="submit">Log In</button>
-        </form>
-        {error && <p>{error}</p>}
+      <div className="Login">
+        <Navbar />
+        <div className="banner"></div>
+        <div className="login-container">
+            <div className="login-content">
+                <h1>Login</h1>
+                <form onSubmit={handleLogin}>
+                <label>
+                    Username:
+                    <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+                </label>
+                <label>
+                    Password:
+                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                </label>
+                <button className="btn-primary" type="submit">Submit</button>
+                </form>
+                <div className="signup-link">Not a member? <a href="signup.html">Sign up</a></div>
+                {error && <p style={{textAlign: "center"}}>{error}</p>}
+            </div>
+        </div>
+        {/* <Footer /> */}
       </div>
     );
   };
