@@ -9,6 +9,19 @@ const JWT_SECRET = 'jwtpassword123';
 
 app.use(express.json());
 
+const authenticateToken = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN_HERE
+
+  if (token == null) return res.sendStatus(401); // No token was provided
+
+  jwt.verify(token, JWT_SECRET, (err, user) => {
+    if (err) return res.sendStatus(403); // Token was invalid
+    req.user = user;
+    next();
+  });
+};
+
 // Fetch instructors
 app.get('/api/instructors', (req, res) => {
     let sql = 'SELECT * FROM Instructor';
@@ -43,7 +56,6 @@ app.get('/api/classes/:id', (req, res) => {
             console.error('Error fetching class details', error);
             res.status(500).send('Error fetching class details');
         } else {
-            // Assuming you're expecting one class back, you might want to just send the first result
             res.json(results[0] || {});
         }
     });
@@ -130,6 +142,25 @@ app.get('/api/bookings', (req, res) => {
       } else {
           res.send(results);
       }
+  });
+});
+
+// Delete Booking
+app.delete('/api/cancel-booking/:id', authenticateToken, async (req, res) => {
+  const { id } = req.params;
+  const customerID = req.user.userId;
+
+  const query = 'DELETE FROM Booking WHERE classID = ? AND customerID = ?';
+
+  connection.query(query, [id, customerID], (error, results) => {
+      if (error) {
+          console.error('Error cancelling booking:', error);
+          return res.status(500).json({ message: 'Error cancelling booking' });
+      }
+      if (results.affectedRows === 0) {
+          return res.status(404).json({ message: 'Booking not found or you do not have permission to cancel this booking' });
+      }
+      res.status(200).json({ message: 'Booking cancelled successfully' });
   });
 });
 

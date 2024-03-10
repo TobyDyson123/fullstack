@@ -61,7 +61,18 @@ const Bookings = () => {
     };
 
     if (loading) {
-        return Array.from({ length: 9 }).map((_, index) => <SkeletonLoader key={index} />);
+        return (
+        <div className="Bookings">
+            <Navbar />
+            <div className="bookings-container">
+                <h1>Your Bookings</h1>
+                <div className="cards-container">
+                    {Array.from({ length: 9 }).map((_, index) => <SkeletonLoader key={index} />)};
+                </div>
+            </div>
+            <Footer />
+        </div>
+        );
     }
 
     return (
