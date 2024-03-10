@@ -2,7 +2,91 @@
     margin-top: 150px;
 }
 
+.Booked .booked-container {
+    margin-left: 100px;
+    min-height: 70vh;
+}
+
 .Booked h1 {
     font-size: 48px;
-    margin-left: 100px;
+}
+
+.Booked .booked-container p {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.Booked .links-container {
+    margin-top: 50px;
+    display: flex;
+}
+
+.Booked .links-container a:not(:last-child) {
+    margin-right: 20px;
+}
+
+.Booked .booked-container a {
+    border-radius: 10px;
+    padding: 10px 40px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.Booked .booked-container .major {
+    background-color: #5BADCC;
+    color: black;
+}
+
+.Booked .booked-container .minor {
+    background-color: none;
+    border: 1px solid black;
+    color: black;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.Booked .booked-container .minor:hover {
+    background-color: #bababa;
+    color: black;
+}
+
+@media screen and (max-width: 1000px) {
+    .Booked .booked-container {
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .Booked .booked-container p {
+        font-size: 18px;
+    }
+
+    .Booked .booked-container h1 {
+       font-size: 36px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .Booked .booked-container {
+        margin: 0 auto;
+        width: 90%;
+        text-align: center;
+    }
+
+    .Booked .booked-container .links-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .Booked .booked-container .links-container a {
+        width: fit-content;
+    }
+
+    .Booked .links-container a:not(:last-child) {
+        margin-right: 0px;
+    }
+
+    .Booked .links-container a:not(:last-child) {
+        margin-bottom: 20px;
+    }
 }
