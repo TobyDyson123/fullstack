@@ -101,6 +101,7 @@ const Class = () => {
             <p><strong>Duration:</strong> {formatDuration(classDetails.duration)}</p>
             <p><strong>Lead by:</strong> {classDetails.instructor}</p>
             <p><strong>Capacity:</strong> {classDetails.capacity}</p>
+            <p><strong>Location:</strong> {classDetails.location}</p>
             <button onClick={handleBookClass}>Book Now</button>
           </div>
           <div className='class-image-wrapper'>

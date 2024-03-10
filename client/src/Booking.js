@@ -103,6 +103,7 @@ const Bookings = () => {
                     <p><strong>Duration: </strong>{formatDuration(Class.duration)}</p>
                     <p><strong>Lead by: </strong>{Class.instructor}</p>
                     <p><strong>Capacity: </strong>{Class.capacity}</p>
+                    <p><strong>Location: </strong>{Class.location}</p>
                     <span onClick={() => cancelBooking(Class.classID)} id="cancel">Cancel</span>
                   </div>
                 ))}

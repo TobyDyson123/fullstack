@@ -36,7 +36,7 @@ app.get('/api/instructors', (req, res) => {
 
 // Fetch classes
 app.get('/api/classes', (req, res) => {
-    let sql = "SELECT Class.classID, Class.title, Class.time, Class.date, Class.duration, Class.capacity, CONCAT(Instructor.firstname, ' ', Instructor.surname) AS instructor FROM  Class JOIN  Instructor ON Class.instructorID = Instructor.instructorID ORDER BY Class.date, Class.time ASC;";
+    let sql = "SELECT Class.classID, Class.title, Class.time, Class.date, Class.duration, Class.capacity, Class.location, CONCAT(Instructor.firstname, ' ', Instructor.surname) AS instructor FROM  Class JOIN  Instructor ON Class.instructorID = Instructor.instructorID ORDER BY Class.date, Class.time ASC;";
     connection.query(sql, (error, results) => {
         if (error) {
             console.log('Error fetching classes', error);
@@ -49,7 +49,7 @@ app.get('/api/classes', (req, res) => {
 // Fetch class details
 app.get('/api/classes/:id', (req, res) => {
     const { id } = req.params;
-    let sql = "SELECT Class.classID, Class.title, Class.time, Class.date, Class.duration, Class.capacity, CONCAT(Instructor.firstname, ' ', Instructor.surname) AS instructor, Instructor.photo FROM Class JOIN Instructor ON Class.instructorID = Instructor.instructorID WHERE Class.classID = ?;";
+    let sql = "SELECT Class.classID, Class.title, Class.time, Class.date, Class.duration, Class.capacity, Class.location, CONCAT(Instructor.firstname, ' ', Instructor.surname) AS instructor, Instructor.photo FROM Class JOIN Instructor ON Class.instructorID = Instructor.instructorID WHERE Class.classID = ?;";
     
     connection.query(sql, [id], (error, results) => {
         if (error) {
@@ -135,7 +135,7 @@ app.post('/api/signup', async (req, res) => {
 
 // Fetch Bookings
 app.get('/api/bookings', (req, res) => {
-  let sql = "SELECT Class.classID, Class.title, Class.time, Class.date, Class.duration, Class.capacity, CONCAT(Instructor.firstname, ' ', Instructor.surname) AS instructor FROM Class JOIN Instructor ON Class.instructorID = Instructor.instructorID JOIN Booking ON Class.classID = Booking.classID JOIN Customer ON Booking.customerID = Customer.customerID WHERE Booking.customerID = 1 ORDER BY Class.date, Class.time ASC;";
+  let sql = "SELECT Class.classID, Class.title, Class.time, Class.date, Class.duration, Class.capacity, Class.location, CONCAT(Instructor.firstname, ' ', Instructor.surname) AS instructor FROM Class JOIN Instructor ON Class.instructorID = Instructor.instructorID JOIN Booking ON Class.classID = Booking.classID JOIN Customer ON Booking.customerID = Customer.customerID WHERE Booking.customerID = 1 ORDER BY Class.date, Class.time ASC;";
   connection.query(sql, (error, results) => {
       if (error) {
           console.log('Error fetching classes', error);
