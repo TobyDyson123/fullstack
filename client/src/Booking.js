@@ -11,8 +11,14 @@ const Bookings = () => {
 
     useEffect(() => {
         const fetchClasses = async () => {
+            const token = localStorage.getItem('token'); // Retrieve the token from localStorage
+        
             try {
-                const response = await fetch('/api/bookings');
+                const response = await fetch('/api/bookings', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
                 const data = await response.json();
                 setClasses(data);
                 setLoading(false);
@@ -26,8 +32,15 @@ const Bookings = () => {
     }, []);
 
     const cancelBooking = async (classId) => {
+        const token = localStorage.getItem('token'); // Retrieve the token from localStorage
+    
         try {
-            await fetch(`/api/cancel-booking/${classId}`, { method: 'DELETE' });
+            await fetch(`/api/cancel-booking/${classId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
             setClasses(classes.filter(Class => Class.classID !== classId));
         } catch (error) {
             console.error('Error cancelling booking:', error);
@@ -95,6 +108,7 @@ const Bookings = () => {
                 ))
             ) : (
                 <div>
+                    <h2>It looks like you have no bookings...</h2>
                     <p>You have no bookings. Start booking your classes now!</p>
                     <Link to="/classes" className="book-class-link">Book a Class</Link>
                 </div>

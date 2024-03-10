@@ -42,6 +42,15 @@
     cursor: pointer;
 }
 
+.bookings-container a {
+    background-color: #5BADCC;
+    border-radius: 10px;
+    color: black;
+    padding: 10px 40px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
 @media (max-width: 1200px) {
     .bookings-container .cards-container {
         grid-template-columns: repeat(2, 1fr);

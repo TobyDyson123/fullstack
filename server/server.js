@@ -17,6 +17,7 @@ const authenticateToken = (req, res, next) => {
 
   jwt.verify(token, JWT_SECRET, (err, user) => {
     if (err) return res.sendStatus(403); // Token was invalid
+    console.log(user);
     req.user = user;
     next();
   });
@@ -80,7 +81,7 @@ app.post('/api/login', async (req, res) => {
   
         if (match) {
           // Create JWT token
-          const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '1h' });
+          const token = jwt.sign({ userId: user.customerID }, JWT_SECRET, { expiresIn: '1h' });
   
           res.json({ success: true, token });
         } else {
@@ -149,6 +150,9 @@ app.get('/api/bookings', (req, res) => {
 app.delete('/api/cancel-booking/:id', authenticateToken, async (req, res) => {
   const { id } = req.params;
   const customerID = req.user.userId;
+
+  console.log(req.user)
+  console.log("classID:", id, "customerID:", customerID);
 
   const query = 'DELETE FROM Booking WHERE classID = ? AND customerID = ?';
 
