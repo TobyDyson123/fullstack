@@ -46,7 +46,7 @@
     border-radius: 30px;
 }
 
-.class-info-container a {
+.class-info-container button {
     background-color: #5BADCC;
     border-radius: 10px;
     color: black;
@@ -57,6 +57,8 @@
     font-size: 20px;
     text-align: center;
     margin-top: auto;
+    border: none;
+    cursor: pointer;
 }
 
 .return-to-classes-btn {

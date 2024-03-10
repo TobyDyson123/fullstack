@@ -164,6 +164,22 @@ app.delete('/api/cancel-booking/:id', authenticateToken, async (req, res) => {
   });
 });
 
+// Add new booking
+app.post('/api/book-class/:id', authenticateToken, async (req, res) => {
+  const classId = req.params.id;
+  const userId = req.user.userId;
+
+  const query = 'INSERT INTO Booking (classID, customerID) VALUES (?, ?)';
+  
+  connection.query(query, [classId, userId], (error, results) => {
+    if (error) {
+      console.error('Error creating booking:', error);
+      return res.status(500).json({ message: 'Error creating booking' });
+    }
+    res.status(201).json({ message: 'Booking created successfully' });
+  });
+});
+
 app.listen(5000, () => {
     console.log('Server is running on port 5000');
     connection.connect((err) => {

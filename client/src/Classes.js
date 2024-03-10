@@ -7,22 +7,36 @@ import SkeletonLoader from './skeleton';
 
 const Classes = () => {
     const [classes, setClasses] = useState([]);
-  
+    const [bookedClasses, setBookedClasses] = useState([]);
+    const navigate = useNavigate();
+
     useEffect(() => {
-      const fetchClasses = async () => {
-        try {
-          const response = await fetch('/api/classes');
-          const data = await response.json();
-          setClasses(data);
-        } catch (error) {
-          console.error('Error fetching classes:', error);
-        }
-      };
-  
-      fetchClasses();
+        const fetchClasses = async () => {
+            try {
+                const classesResponse = await fetch('/api/classes');
+                const classesData = await classesResponse.json();
+
+                const token = localStorage.getItem('token');
+                if (token) {
+                    const bookingsResponse = await fetch('/api/bookings', {
+                        headers: { Authorization: `Bearer ${token}` }
+                    });
+                    const bookingsData = await bookingsResponse.json();
+                    setBookedClasses(bookingsData.map(booking => booking.classID));
+                }
+
+                setClasses(classesData);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchClasses();
     }, []);
 
-    const navigate = useNavigate();
+    // Filter out classes that the user has booked
+    const availableClasses = classes.filter(cls => !bookedClasses.includes(cls.classID));
+
     const handleCardClick = (classID) => {
       console.log("Navigating to class with ID:", classID);
       navigate(`/class/${classID}`);
@@ -70,10 +84,10 @@ const Classes = () => {
         <div className="classes-container">
           <h1>Available Classes</h1>
           <div className="cards-container">
-          {classes.length === 0 ? (
+          {availableClasses.length === 0 ? (
             Array.from({ length: 9 }).map((_, index) => <SkeletonLoader key={index} />)
           ) : (
-            classes.map(Class => (
+            availableClasses.map(Class => (
               <div key={Class.classID} className="card" onClick={() => handleCardClick(Class.classID)}>
                 <h2>{Class.title}</h2>
                 <p><strong>Date: </strong>{formatDate(Class.date)}</p>

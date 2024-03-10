@@ -32,6 +32,26 @@ const Class = () => {
     fetchClassDetails();
   }, [id, navigate]);
 
+  const handleBookClass = async () => {
+    const token = localStorage.getItem('token');
+    try {
+      const response = await fetch(`/api/book-class/${id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (response.ok) {
+        navigate(`/`);
+      } else {
+        throw new Error('Failed to book the class');
+      }
+    } catch (error) {
+      console.error('Error booking the class:', error);
+    }
+  };
 
   const formatDate = (dateString) => {
       const date = new Date(dateString);
@@ -81,7 +101,7 @@ const Class = () => {
             <p><strong>Duration:</strong> {formatDuration(classDetails.duration)}</p>
             <p><strong>Lead by:</strong> {classDetails.instructor}</p>
             <p><strong>Capacity:</strong> {classDetails.capacity}</p>
-            <Link to="/">Book Now</Link>
+            <button onClick={handleBookClass}>Book Now</button>
           </div>
           <div className='class-image-wrapper'>
             <img src={classDetails.photo} alt={classDetails.title} />
