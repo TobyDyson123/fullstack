@@ -1,18 +1,27 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import Navbar from './navbar';
 import Footer from './footer';
-import './class.css';
-import { Link } from 'react-router-dom';
+import './class.css'; 
 
 const Class = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [classDetails, setClassDetails] = useState(null);
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      navigate('/login');
+    }
+
     const fetchClassDetails = async () => {
       try {
-        const response = await fetch(`/api/classes/${id}`);
+        const response = await fetch(`/api/classes/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         const data = await response.json();
         setClassDetails(data);
       } catch (error) {
@@ -21,7 +30,8 @@ const Class = () => {
     };
 
     fetchClassDetails();
-  }, [id]);
+  }, [id, navigate]);
+
 
   const formatDate = (dateString) => {
       const date = new Date(dateString);

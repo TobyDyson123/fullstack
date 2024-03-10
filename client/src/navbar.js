@@ -38,7 +38,7 @@ function Navbar() {
             <li><Link to="/classes">Classes</Link></li>
             {isLoggedIn ? (
               <>
-                <li><Link className="major-button" to="/manage-bookings">Manage Bookings</Link></li>
+                <li><Link className="major-button" to="/bookings">Manage Bookings</Link></li>
                 <li>
                   <button onClick={handleLogout} className="logout-button">
                     <i className="fas fa-sign-out-alt"></i>

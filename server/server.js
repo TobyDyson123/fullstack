@@ -121,6 +121,18 @@ app.post('/api/signup', async (req, res) => {
     }
 });
 
+// Fetch Bookings
+app.get('/api/bookings', (req, res) => {
+  let sql = "SELECT Class.classID, Class.title, Class.time, Class.date, Class.duration, Class.capacity, CONCAT(Instructor.firstname, ' ', Instructor.surname) AS instructor FROM Class JOIN Instructor ON Class.instructorID = Instructor.instructorID JOIN Booking ON Class.classID = Booking.classID JOIN Customer ON Booking.customerID = Customer.customerID WHERE Booking.customerID = 1 ORDER BY Class.date, Class.time ASC;";
+  connection.query(sql, (error, results) => {
+      if (error) {
+          console.log('Error fetching classes', error);
+      } else {
+          res.send(results);
+      }
+  });
+});
+
 app.listen(5000, () => {
     console.log('Server is running on port 5000');
     connection.connect((err) => {
