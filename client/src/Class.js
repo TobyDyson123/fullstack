@@ -44,7 +44,7 @@ const Class = () => {
       });
 
       if (response.ok) {
-        navigate(`/`);
+        navigate(`/booked`);
       } else {
         throw new Error('Failed to book the class');
       }

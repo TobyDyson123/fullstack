@@ -6,6 +6,7 @@ import Class from './Class';
 import Login from './Login';
 import Signup from './Signup';
 import Bookings from './Booking';
+import Booked from './Booked';
 import {HashRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/classes" element={<Classes />} />
           <Route path="/class/:id" element={<Class />} />
           <Route path="/bookings" element={<Bookings />} />
+          <Route path="/booked" element={<Booked />} />
         </Routes>
       </Router>
     </div>
