@@ -89,34 +89,34 @@ const Bookings = () => {
     }
 
     return (
-      <div className="Bookings">
-        <Navbar />
-        <div className="bookings-container">
-          <h1>Your Bookings</h1>
-          <div className="cards-container">
-          {classes.length > 0 ? (
-                classes.map(Class => (
-                    <div key={Class.classID} className="card">
-                        <h2>{Class.title}</h2>
-                        <p><strong>Date: </strong>{formatDate(Class.date)}</p>
-                        <p><strong>Time: </strong>{formatTime(Class.time)}</p>
-                        <p><strong>Duration: </strong>{formatDuration(Class.duration)}</p>
-                        <p><strong>Lead by: </strong>{Class.instructor}</p>
-                        <p><strong>Capacity: </strong>{Class.capacity}</p>
-                        <span onClick={() => cancelBooking(Class.classID)} id="cancel">Cancel</span>
-                    </div>
-                ))
+        <div className="Bookings">
+          <Navbar />
+          <div className="bookings-container">
+            <h1>Your Bookings</h1>
+            {classes.length > 0 ? (
+              <div className="cards-container">
+                {classes.map(Class => (
+                  <div key={Class.classID} className="card">
+                    <h2>{Class.title}</h2>
+                    <p><strong>Date: </strong>{formatDate(Class.date)}</p>
+                    <p><strong>Time: </strong>{formatTime(Class.time)}</p>
+                    <p><strong>Duration: </strong>{formatDuration(Class.duration)}</p>
+                    <p><strong>Lead by: </strong>{Class.instructor}</p>
+                    <p><strong>Capacity: </strong>{Class.capacity}</p>
+                    <span onClick={() => cancelBooking(Class.classID)} id="cancel">Cancel</span>
+                  </div>
+                ))}
+              </div>
             ) : (
-                <div>
-                    <h2>It looks like you have no bookings...</h2>
-                    <p>You have no bookings. Start booking your classes now!</p>
-                    <Link to="/classes" className="book-class-link">Book a Class</Link>
-                </div>
+              <div className="no-bookings-message">
+                <h2>It looks like you have no bookings...</h2>
+                <p>You have no bookings. Start booking your classes now!</p>
+                <Link to="/classes" className="book-class-link">Book a Class</Link>
+              </div>
             )}
           </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
     );
   };
   
