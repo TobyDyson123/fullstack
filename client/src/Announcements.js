@@ -46,6 +46,19 @@ const Announcements = () => {
           </div>
         </div>
       </div>
+      <div className="newsletter-container">
+        <div className='newsletter-info-container'>
+            <h2>Want to keep up to date with all things yoga? </h2>
+            <p>Sign up to our free email newsletter to receive all the latest news, tips, and insights directly in your inbox! </p>
+        </div>
+        <div className='newsletter-form-container'>
+            <form>
+                <label>Email Address:</label>
+                <input type="email" placeholder="Enter your email" required />
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+      </div>
       <Footer />
     </div>
   );
