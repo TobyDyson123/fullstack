@@ -33,7 +33,7 @@ function Navbar() {
         </a>
         <div className="navbar-links">
           <ul>
-            <li><a href="#">Announcements</a></li>
+            <li><Link to="/announcements">Announcements</Link></li>
             <li><Link to="/instructors">Instructors</Link></li>
             <li><Link to="/classes">Classes</Link></li>
             {isLoggedIn ? (

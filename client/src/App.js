@@ -7,6 +7,7 @@ import Login from './Login';
 import Signup from './Signup';
 import Bookings from './Booking';
 import Booked from './Booked';
+import Announcements from './Announcements';
 import {HashRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/class/:id" element={<Class />} />
           <Route path="/bookings" element={<Bookings />} />
           <Route path="/booked" element={<Booked />} />
+          <Route path="/announcements" element={<Announcements />} />
         </Routes>
       </Router>
     </div>
