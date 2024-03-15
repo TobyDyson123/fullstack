@@ -1,12 +1,14 @@
 import Navbar from './navbar';
 import Footer from './footer';
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Announcements.css';
 
 const Announcements = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [customerDetails, setCustomerDetails] = useState(null);
+  const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,19 +32,59 @@ const Announcements = () => {
   };
 
   const handleSubscriptionToggle = async () => {
-      try {
-          await fetch('/api/customer/toggle-subscription', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-                  Authorization: `Bearer ${localStorage.getItem('token')}`,
-              },
-          });
-          // Refetch customer details or toggle locally
-          fetchCustomerDetails(localStorage.getItem('token'));
-      } catch (error) {
-          console.error('Error toggling subscription:', error);
+    try {
+        const response = await fetch('/api/customer/toggle-subscription', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        });
+        const updatedDetails = await response.json();
+        if (response.ok) {
+            setCustomerDetails(prevDetails => ({
+                ...prevDetails,
+                subscribed: updatedDetails.subscribed
+            }));
+        } else {
+            throw new Error('Failed to toggle subscription');
+        }
+    } catch (error) {
+        console.error('Error toggling subscription:', error);
+    }
+  };
+
+  const validateEmail = (email) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validateEmail(email)) {
+      setEmailError('Please enter a valid email address.');
+      return;
+    }
+    setEmailError('');
+
+    try {
+      const response = await fetch('/api/customer/update-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        fetchCustomerDetails(localStorage.getItem('token'));
+      } else {
+        throw new Error('Failed to update email');
       }
+    } catch (error) {
+      console.error('Error updating email:', error);
+    }
   };
 
   return (
@@ -88,17 +130,6 @@ const Announcements = () => {
         </div>
       </div>
       <div className="newsletter-container">
-        {/* <div className='newsletter-info-container'>
-            <h2>Want to keep up to date with all things yoga? </h2>
-            <p>Sign up to our free email newsletter to receive all the latest news, tips, and insights directly in your inbox! </p>
-        </div>
-        <div className='newsletter-form-container'>
-            <form>
-                <label>Email Address:</label>
-                <input type="email" placeholder="Enter your email" required />
-                <button type="submit">Subscribe</button>
-            </form>
-        </div> */}
         <div className='newsletter-info-container'>
             <h2>Want to keep up to date with all things yoga? </h2>
             <p>Sign up to our free email newsletter to receive all the latest news, tips, and insights directly in your inbox! </p>
@@ -108,25 +139,27 @@ const Announcements = () => {
                 customerDetails?.email ? (
                     <>
                         <div className='newsletter-form-wrapper'>
-                            <h2>Your Subscription Status: {customerDetails.subscribed ? "Subscribed" : "Not Subscribed"}</h2>
+                            <h3>Your Subscription Status:</h3>
+                            <p>{customerDetails.subscribed === 'yes' ? "You are already subscribed to the newsletter" : "You are not yet subscribed to the newsletter"}</p>
                             <button onClick={handleSubscriptionToggle}>
-                                {customerDetails.subscribed ? "Unsubscribe" : "Subscribe"}
+                                {customerDetails.subscribed === 'yes' ? "Unsubscribe" : "Subscribe"}
                             </button>
                         </div>
                     </>
                 ) : (
-                    <div className='newsletter-form-wrapper'>
-                        <form>
-                          <label>Email Address:</label>
-                          <input type="email" placeholder="Enter your email" required />
-                          <button type="submit">Subscribe</button>
-                      </form>
-                    </div>
+                  <div className='newsletter-form-wrapper'>
+                    <form onSubmit={handleSubmit}>
+                      <label>Email Address:</label>
+                      <input type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                      <button type="submit">Subscribe</button>
+                      {emailError && <p className="error-message">{emailError}</p>}
+                    </form>
+                  </div>
                 )
             ) : (
                 <div className='newsletter-form-wrapper'>
                     <h3>You need to be logged in to subscribe to the newsletter.</h3>
-                    <button onClick={() => navigate("/signup")}>Sign Up</button>
+                    <button onClick={() => navigate("/login")}>Login</button>
                 </div>
           )}
           </div>

@@ -220,11 +220,29 @@ app.post('/api/customer/toggle-subscription', authenticateToken, (req, res) => {
                   console.error('Error updating subscription status:', updateError);
                   return res.status(500).json({ message: 'Error updating subscription status' });
               }
-              res.json({ message: 'Subscription status updated successfully', subscribed: newStatus });
+              res.json({ subscribed: newStatus }); // Ensure this matches what you're expecting on the frontend
           });
       } else {
           res.status(404).json({ message: 'Customer not found' });
       }
+  });
+});
+
+// Update email address
+app.post('/api/customer/update-email', authenticateToken, async (req, res) => {
+  const { email } = req.body;
+  const userId = req.user.userId;
+
+  const updateQuery = 'UPDATE Customer SET email = ?, subscribed = "yes" WHERE customerID = ?';
+  connection.query(updateQuery, [email, userId], (error, results) => {
+    if (error) {
+      console.error('Error updating email:', error);
+      return res.status(500).json({ message: 'Error updating email' });
+    }
+    if (results.affectedRows === 0) {
+      return res.status(404).json({ message: 'Customer not found' });
+    }
+    res.status(200).json({ message: 'Email updated successfully' });
   });
 });
 
