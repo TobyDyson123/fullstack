@@ -180,6 +180,54 @@ app.post('/api/book-class/:id', authenticateToken, async (req, res) => {
   });
 });
 
+// Fetch customer details
+app.get('/api/customer/details', authenticateToken, (req, res) => {
+  const userId = req.user.userId;
+
+  const query = 'SELECT * FROM Customer WHERE customerID = ?';
+  connection.query(query, [userId], (error, results) => {
+      if (error) {
+          console.error('Error fetching customer details:', error);
+          return res.status(500).json({ message: 'Error fetching customer details' });
+      }
+
+      if (results.length > 0) {
+          res.json(results[0]);
+      } else {
+          res.status(404).json({ message: 'Customer not found' });
+      }
+  });
+});
+
+// Update customer subscription status
+app.post('/api/customer/toggle-subscription', authenticateToken, (req, res) => {
+  const userId = req.user.userId;
+
+  const getSubscriptionQuery = 'SELECT subscribed FROM Customer WHERE customerID = ?';
+  connection.query(getSubscriptionQuery, [userId], (error, results) => {
+      if (error) {
+          console.error('Error fetching subscription status:', error);
+          return res.status(500).json({ message: 'Error fetching subscription status' });
+      }
+
+      if (results.length > 0) {
+          const currentStatus = results[0].subscribed;
+          const newStatus = currentStatus === 'yes' ? 'no' : 'yes';
+
+          const updateQuery = 'UPDATE Customer SET subscribed = ? WHERE customerID = ?';
+          connection.query(updateQuery, [newStatus, userId], (updateError, updateResults) => {
+              if (updateError) {
+                  console.error('Error updating subscription status:', updateError);
+                  return res.status(500).json({ message: 'Error updating subscription status' });
+              }
+              res.json({ message: 'Subscription status updated successfully', subscribed: newStatus });
+          });
+      } else {
+          res.status(404).json({ message: 'Customer not found' });
+      }
+  });
+});
+
 app.listen(5000, () => {
     console.log('Server is running on port 5000');
     connection.connect((err) => {

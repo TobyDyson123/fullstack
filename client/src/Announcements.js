@@ -1,13 +1,54 @@
 import Navbar from './navbar';
 import Footer from './footer';
-import './Announcements.css'; 
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import './Announcements.css';
 
 const Announcements = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [customerDetails, setCustomerDetails] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+      const token = localStorage.getItem('token');
+      setIsLoggedIn(!!token);
+      if (token) {
+          fetchCustomerDetails(token);
+      }
+  }, []);
+
+  const fetchCustomerDetails = async (token) => {
+      try {
+          const response = await fetch('/api/customer/details', {
+              headers: { Authorization: `Bearer ${token}` },
+          });
+          const data = await response.json();
+          setCustomerDetails(data);
+      } catch (error) {
+          console.error('Error fetching customer details:', error);
+      }
+  };
+
+  const handleSubscriptionToggle = async () => {
+      try {
+          await fetch('/api/customer/toggle-subscription', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  Authorization: `Bearer ${localStorage.getItem('token')}`,
+              },
+          });
+          // Refetch customer details or toggle locally
+          fetchCustomerDetails(localStorage.getItem('token'));
+      } catch (error) {
+          console.error('Error toggling subscription:', error);
+      }
+  };
 
   return (
     <div className="Announcements">
       <Navbar />
-      <div className="anouncements-container">
+      <div className="announcements-container">
         <h1>Announcements</h1>
         <div className='announcements-info-container'>
           <div className='announcements-details-wrapper'>
@@ -47,7 +88,7 @@ const Announcements = () => {
         </div>
       </div>
       <div className="newsletter-container">
-        <div className='newsletter-info-container'>
+        {/* <div className='newsletter-info-container'>
             <h2>Want to keep up to date with all things yoga? </h2>
             <p>Sign up to our free email newsletter to receive all the latest news, tips, and insights directly in your inbox! </p>
         </div>
@@ -57,7 +98,38 @@ const Announcements = () => {
                 <input type="email" placeholder="Enter your email" required />
                 <button type="submit">Subscribe</button>
             </form>
+        </div> */}
+        <div className='newsletter-info-container'>
+            <h2>Want to keep up to date with all things yoga? </h2>
+            <p>Sign up to our free email newsletter to receive all the latest news, tips, and insights directly in your inbox! </p>
         </div>
+        <div className='newsletter-form-container'>
+        {isLoggedIn ? (
+                customerDetails?.email ? (
+                    <>
+                        <div className='newsletter-form-wrapper'>
+                            <h2>Your Subscription Status: {customerDetails.subscribed ? "Subscribed" : "Not Subscribed"}</h2>
+                            <button onClick={handleSubscriptionToggle}>
+                                {customerDetails.subscribed ? "Unsubscribe" : "Subscribe"}
+                            </button>
+                        </div>
+                    </>
+                ) : (
+                    <div className='newsletter-form-wrapper'>
+                        <form>
+                          <label>Email Address:</label>
+                          <input type="email" placeholder="Enter your email" required />
+                          <button type="submit">Subscribe</button>
+                      </form>
+                    </div>
+                )
+            ) : (
+                <div className='newsletter-form-wrapper'>
+                    <h3>You need to be logged in to subscribe to the newsletter.</h3>
+                    <button onClick={() => navigate("/signup")}>Sign Up</button>
+                </div>
+          )}
+          </div>
       </div>
       <Footer />
     </div>

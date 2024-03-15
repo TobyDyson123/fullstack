@@ -7,6 +7,10 @@
     margin-left: 100px;
 }
 
+.announcements-container {
+    margin-bottom: 100px;
+}
+
 .announcements-info-container h2 {
     font-size: 30px;
     margin-bottom: 30px;
@@ -117,7 +121,7 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.newsletter-container .newsletter-form-container form {
+.newsletter-form-wrapper {
     border: 1px solid black;
     border-radius: 25px;
     padding: 50px;
