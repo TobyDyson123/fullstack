@@ -4,6 +4,7 @@ import { useState } from 'react';
 import './login.css';
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
+import useScrollToTop from "./scrollToTop";
 
 const SignUp = () => {
     const [username, setUsername] = useState('');
@@ -49,6 +50,7 @@ const SignUp = () => {
       }
     };
 
+    useScrollToTop();
     return (
       <div className="Login">
         <Navbar />
