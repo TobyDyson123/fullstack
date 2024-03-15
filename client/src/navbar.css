@@ -20,14 +20,14 @@
 }
 
 .navbar-links li {
-    padding: 0 10px;
+    padding: 0 5px;
 }
 
 .navbar-links a {
     transition: color 0.2s ease;
     color: #fff;
     text-decoration: none;
-    padding: 5px;
+    padding: 10px;
 }
 
 .navbar-links a:hover {
@@ -76,14 +76,13 @@
 }
 
 .toggle-button {
-    position: absolute;
-    top: .75em;
-    right: .75em;
     display: none;
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
     height: 21px;
+    margin-left: auto;
+    margin-right: 20px;
 }
 
 .toggle-button .bar {

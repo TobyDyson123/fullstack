@@ -26,11 +26,11 @@ function Navbar() {
           <div className='brand-icon'><img src={logo} alt='logo' /></div>
           <div className="brand-title">Brand</div>
         </Link>
-        <a href="#" className="toggle-button">
+        <div className="toggle-button">
           <span className="bar"></span>
           <span className="bar"></span>
           <span className="bar"></span>
-        </a>
+        </div>
         <div className="navbar-links">
           <ul>
             <li><Link to="/announcements">Announcements</Link></li>
