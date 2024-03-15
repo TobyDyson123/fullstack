@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isActive, setIsActive] = useState(false); // State to manage the active class for responsiveness
 
   useEffect(() => {
     // Update isLoggedIn state based on the token's presence
@@ -19,9 +20,14 @@ function Navbar() {
     window.location.href = '/';
   };
 
+  const toggleActive = () => {
+    console.log('Current state before toggling:', isActive);
+    setIsActive(!isActive);
+  };
+
   return (
     <div className="Navbar">
-      <nav className="navbar">
+      {/* <nav className="navbar">
         <Link to="/" className='brand'>
           <div className='brand-icon'><img src={logo} alt='logo' /></div>
           <div className="brand-title">Brand</div>
@@ -53,7 +59,35 @@ function Navbar() {
             )}
           </ul>
         </div>
-      </nav>
+      </nav> */}
+      <div className={isActive ? "topnav responsive" : "topnav"} id="myTopnav">
+        <div className='brand'>
+          <Link to="/">
+            <div className='brand-icon'><img src={logo} alt='logo' /> Brand</div>
+          </Link>
+        </div>
+        <div className='links'>
+          <Link to="/announcements">Announcements</Link>
+          <Link to="/instructors">Instructors</Link>
+          <Link to="/classes">Classes</Link>
+          {isLoggedIn ? (
+            <>
+              <Link className="major-button" to="/bookings">Manage Bookings</Link>
+              <Link onClick={handleLogout} className="logout-button">
+                <i className="fas fa-sign-out-alt"></i>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link className="minor-button" to="/login">Login</Link>
+              <Link className="major-button" to="/signup">Sign Up</Link>
+            </>
+          )}
+          <a href="javascript:void(0);" className="icon" onClick={toggleActive}>
+            <i className="fa fa-bars"></i>
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
