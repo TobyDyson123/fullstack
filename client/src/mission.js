@@ -2,6 +2,7 @@ import './mission.css';
 import handshake from './Images/handshake.png';
 import calendar from './Images/calendar.png';
 import people from './Images/people.png';
+import { Link } from 'react-router-dom';
 
 function Mission() {
     return (
@@ -22,7 +23,7 @@ function Mission() {
                 <p>We are committed to fostering a <strong>supportive and inclusive community</strong> where each individual can embark on their personal journey towards physical health, mental clarity, and spiritual growth.</p>
               </li>
             </ul>
-            <a href="#">View Announcements</a>
+            <Link to="/announcements">View Announcements</Link>
           </div>
       </div>
     );
