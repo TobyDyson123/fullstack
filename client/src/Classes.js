@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import './classes.css';
 import { useNavigate } from 'react-router-dom';
 import SkeletonLoader from './skeleton';
+import useScrollToTop from "./scrollToTop";
 
 const Classes = () => {
     const [classes, setClasses] = useState([]);
@@ -78,6 +79,7 @@ const Classes = () => {
         return Math.max(0, Math.ceil(dayDiff));
     };   
 
+    useScrollToTop();
     return (
       <div className="Classes">
         <Navbar />

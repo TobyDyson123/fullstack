@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './booking.css';
 import SkeletonLoader from './skeleton';
+import useScrollToTop from "./scrollToTop";
 
 const Bookings = () => {
     const [classes, setClasses] = useState([]);
@@ -72,6 +73,8 @@ const Bookings = () => {
           return `${hours} hour${hours > 1 ? 's' : ''} ${minutes} minutes`;
         }
     };
+    
+    useScrollToTop();
 
     if (loading) {
         return (

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import './instructors.css';
 import { Link } from 'react-router-dom';
 import SkeletonLoader from './skeleton';
+import useScrollToTop from "./scrollToTop";
 
 const Instructors = () => {
   const [instructors, setInstructors] = useState([]);
@@ -33,6 +34,7 @@ const Instructors = () => {
     return isAnniversaryPassed ? years : years - 1;
   };
 
+  useScrollToTop();
   return (
     <div className="Instructors">
       <Navbar />

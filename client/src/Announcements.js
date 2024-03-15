@@ -3,6 +3,7 @@ import Footer from './footer';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Announcements.css';
+import useScrollToTop from './scrollToTop';
 
 const Announcements = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -87,6 +88,7 @@ const Announcements = () => {
     }
   };
 
+  useScrollToTop();
   return (
     <div className="Announcements">
       <Navbar />
