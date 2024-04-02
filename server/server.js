@@ -220,7 +220,7 @@ app.post('/api/customer/toggle-subscription', authenticateToken, (req, res) => {
                   console.error('Error updating subscription status:', updateError);
                   return res.status(500).json({ message: 'Error updating subscription status' });
               }
-              res.json({ subscribed: newStatus }); // Ensure this matches what you're expecting on the frontend
+              res.json({ subscribed: newStatus });
           });
       } else {
           res.status(404).json({ message: 'Customer not found' });

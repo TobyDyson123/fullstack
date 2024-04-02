@@ -27,7 +27,7 @@ const Login = () => {
         if (data.success) {
             localStorage.setItem('token', data.token); // Store the token in local storage
           console.log('Login successful');
-          navigate('/'); // Redirects the user to the homepage
+          navigate('/'); 
         } else {
           setError(data.message || 'Login failed');
         }

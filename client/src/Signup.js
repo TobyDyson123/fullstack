@@ -16,7 +16,6 @@ const SignUp = () => {
     const handleSignUp = async (e) => {
       e.preventDefault();
 
-      // Basic front-end validation for empty fields or password mismatch
       if (!username || !password || !confirmPassword) {
         setError('Please fill in all fields.');
         return;
@@ -40,7 +39,7 @@ const SignUp = () => {
 
         if (data.success) {
           console.log('Registration successful');
-          navigate('/'); // Redirects the user to the homepage
+          navigate('/');
         } else {
           setError(data.message || 'Registration failed');
         }
