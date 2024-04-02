@@ -3,9 +3,11 @@ import Footer from "./footer";
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './booked.css';
+import useScrollToTop from "./scrollToTop";
 
 const Booked = () => {
 
+  useScrollToTop();
     return (
         <div className="Booked">
           <Navbar />
